@@ -1,0 +1,91 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-chalk text-asphalt-900 font-body antialiased;
+  }
+  h1, h2, h3, h4 {
+    @apply font-display;
+  }
+  ::selection {
+    @apply bg-marking text-asphalt-900;
+  }
+  *:focus-visible {
+    outline: 3px solid #F4B41A;
+    outline-offset: 2px;
+  }
+}
+
+@layer utilities {
+  .blueprint-grid {
+    background-image:
+      linear-gradient(to right, rgba(250,248,243,0.06) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(250,248,243,0.06) 1px, transparent 1px);
+    background-size: 32px 32px;
+  }
+
+  .blueprint-grid-light {
+    background-image:
+      linear-gradient(to right, rgba(25,24,26,0.06) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(25,24,26,0.06) 1px, transparent 1px);
+    background-size: 28px 28px;
+  }
+
+  /* Dimension-line tick marks, like architectural drawings */
+  .dim-line {
+    position: relative;
+  }
+  .dim-line::before,
+  .dim-line::after {
+    content: "";
+    position: absolute;
+    width: 1px;
+    height: 6px;
+    background: currentColor;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  .dim-line::before { left: -1px; }
+  .dim-line::after { right: -1px; }
+
+  .text-stroke-marking {
+    -webkit-text-stroke: 1px #F4B41A;
+  }
+
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+
+  .num-input {
+    @apply w-full rounded-sm border border-asphalt-900/20 bg-chalk px-3 py-2 font-mono text-base tabular text-asphalt-900 transition-colors;
+  }
+  .num-input:focus {
+    @apply border-marking-dim;
+  }
+
+  .slider {
+    @apply h-1.5 w-full cursor-pointer appearance-none rounded-full bg-asphalt-900/15;
+  }
+  .slider::-webkit-slider-thumb {
+    @apply h-4 w-4 appearance-none rounded-full bg-marking;
+    -webkit-appearance: none;
+    box-shadow: 0 0 0 3px rgba(244, 180, 26, 0.25);
+  }
+  .slider::-moz-range-thumb {
+    @apply h-4 w-4 cursor-pointer rounded-full border-0 bg-marking;
+    box-shadow: 0 0 0 3px rgba(244, 180, 26, 0.25);
+  }
+
+  .noise::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: var(--tw-bg-grain, none);
+    pointer-events: none;
+  }
+}
