@@ -5,6 +5,7 @@ const NAV = [
   { href: "/tonnage-calculator", label: "Tonnage" },
   { href: "/cost-calculator", label: "Cost" },
   { href: "/driveway-calculator", label: "Driveway" },
+  { href: "/guides", label: "Guides" },
 ];
 
 export default function Header() {

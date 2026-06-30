@@ -108,6 +108,7 @@ export const MIX_TYPES = [
   { id: "open", label: "Porous / Open-graded Mix", density: 125 },
   { id: "sma", label: "Stone Mastic Asphalt (SMA)", density: 150 },
   { id: "cold", label: "Cold Mix (patch & repair)", density: 130 },
+  { id: "recycled", label: "Recycled Asphalt Millings (RAP)", density: 110 },
 ];
 
 export const THICKNESS_GUIDE = [

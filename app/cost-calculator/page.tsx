@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Calculator from "@/components/Calculator";
+import CostBreakdown from "@/components/CostBreakdown";
 import FAQ from "@/components/FAQ";
 
 export const metadata: Metadata = {
@@ -64,15 +65,37 @@ export default function CostCalculatorPage() {
       </section>
 
       <section className="border-t border-asphalt-900/10 bg-concrete-50">
-        <div className="mx-auto max-w-6xl px-5 py-14 sm:px-8">
+        <div className="mx-auto max-w-3xl px-5 py-14 sm:px-8">
           <h2 className="font-display text-3xl font-bold uppercase tracking-tight text-asphalt-900">
-            Related tools
+            Where an installed asphalt dollar goes
           </h2>
-          <div className="mt-6 grid gap-5 sm:grid-cols-3">
-            <Card href="/" title="Asphalt Calculator" body="The full calculator: area, weight, volume, and cost in one place." />
-            <Card href="/tonnage-calculator" title="Tonnage Calculator" body="Get exact tons and truckload counts for ordering material." />
-            <Card href="/driveway-calculator" title="Driveway Calculator" body="Presets for common driveway sizes, dialed in for residential jobs." />
+          <p className="mt-3 font-body leading-relaxed text-steel">
+            For a typical professionally installed driveway, material is
+            usually only about a third of what you pay. Labor and base
+            preparation make up most of the rest — which is why a DIY-supplied
+            material order can come in well under a contractor&apos;s
+            installed quote.
+          </p>
+          <div className="mt-8">
+            <CostBreakdown />
           </div>
+          <p className="mt-4 font-body text-xs text-steel-light">
+            Illustrative national-average split for a standard residential
+            asphalt driveway. Your project&apos;s actual breakdown shifts with
+            site conditions — heavy regrading or drainage work raises the
+            base-prep share significantly.
+          </p>
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-6xl px-5 py-14 sm:px-8">
+        <h2 className="font-display text-3xl font-bold uppercase tracking-tight text-asphalt-900">
+          Related tools
+        </h2>
+        <div className="mt-6 grid gap-5 sm:grid-cols-3">
+          <Card href="/" title="Asphalt Calculator" body="The full calculator: area, weight, volume, and cost in one place." />
+          <Card href="/tonnage-calculator" title="Tonnage Calculator" body="Get exact tons and truckload counts for ordering material." />
+          <Card href="/driveway-calculator" title="Driveway Calculator" body="Presets for common driveway sizes, dialed in for residential jobs." />
         </div>
       </section>
 

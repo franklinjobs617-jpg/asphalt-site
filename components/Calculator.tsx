@@ -22,6 +22,7 @@ interface CalculatorProps {
   presets?: Preset[];
   showInstalledRange?: boolean;
   idAnchor?: string;
+  defaultMixId?: string;
 }
 
 export default function Calculator({
@@ -29,12 +30,13 @@ export default function Calculator({
   presets,
   showInstalledRange = false,
   idAnchor = "calculator",
+  defaultMixId = MIX_TYPES[0].id,
 }: CalculatorProps) {
   const [units, setUnits] = useState<Units>("imperial");
   const [length, setLength] = useState(20);
   const [width, setWidth] = useState(16);
   const [thickness, setThickness] = useState(DEFAULTS.thicknessDriveway);
-  const [mixId, setMixId] = useState(MIX_TYPES[0].id);
+  const [mixId, setMixId] = useState(defaultMixId);
   const [wastePct, setWastePct] = useState(DEFAULTS.wastePct);
   const [pricePerTon, setPricePerTon] = useState(DEFAULTS.pricePerTon);
 

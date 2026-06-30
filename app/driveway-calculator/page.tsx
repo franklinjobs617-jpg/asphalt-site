@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Calculator from "@/components/Calculator";
 import ThicknessGuide from "@/components/ThicknessGuide";
+import ThicknessCompare from "@/components/ThicknessCompare";
 import FAQ from "@/components/FAQ";
 
 export const metadata: Metadata = {
@@ -50,6 +51,9 @@ export default function DrivewayCalculatorPage() {
           your thickness to the heaviest thing that will actually park on it.
         </p>
         <div className="mt-6">
+          <ThicknessCompare />
+        </div>
+        <div className="mt-8">
           <ThicknessGuide />
         </div>
       </section>

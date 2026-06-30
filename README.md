@@ -2,22 +2,38 @@
 
 Next.js 14 (App Router) + Tailwind site for `asphaltcalculatorhq.com`.
 
-## What's built (Phase 1)
+## What's built (Phase 1 + Phase 2)
 
+**Core calculators**
 - `/` — main Asphalt Calculator (targets "asphalt calculator", 22,200/mo)
 - `/tonnage-calculator` — tons & truckloads (targets tonnage cluster, ~3,800/mo)
-- `/cost-calculator` — material + installed price range (targets cost/price cluster, ~4,310/mo)
-- `/driveway-calculator` — with size presets (targets driveway cluster, ~4,400/mo)
+- `/cost-calculator` — material + installed price range, with a cost-breakdown
+  donut chart (targets cost/price cluster, ~4,310/mo)
+- `/driveway-calculator` — with size presets + side-by-side thickness
+  comparison visual (targets driveway cluster, ~4,400/mo)
+- `/unit-converter` — area unit converter + cubic yards→tons converter
+  (targets unit-conversion long tail, ~900/mo)
 
-Each page: live calculator, "how it works" explainer, FAQ (FAQPage schema),
-internal links to the other 3 calculators, and SoftwareApplication/HowTo
-schema where relevant.
+**Guides** (`/guides` hub + 4 articles)
+- `/guides/how-to-calculate-asphalt-tonnage` — worked-example tutorial
+- `/guides/asphalt-density-explained` — density bar chart + mix-type explainer
+- `/guides/recycled-millings-cold-patch-calculator` — mini calculator + explainer for RAP/cold patch
+- `/guides/asphalt-vs-concrete-driveway-cost` — comparison table + analysis
 
-**Not yet built (Phase 2 — see the planning doc):** `/guides/` knowledge
-pages (millings/cold-patch/recycled material, density & formula explainer,
-unit converter). These are lower search volume and were intentionally
-deferred so Phase 1 could ship with full depth on the four core pages
-rather than thin content across more pages.
+**Compliance / E-E-A-T pages**
+- `/about` — independent hobbyist-site positioning, methodology disclosure
+- `/contact` — support@asphaltcalculatorhq.com
+- `/privacy-policy` — AdSense/cookie/analytics/affiliate disclosure
+- `/terms` — estimate disclaimer, liability, acceptable use
+
+Every page: FAQ (FAQPage schema), internal links, and HowTo/Article/
+SoftwareApplication schema where relevant. All 19 routes type-check and
+statically build cleanly (`next build`).
+
+**Still open for a later pass:** a `/blog` for ongoing freshness signal,
+and possibly state/region-specific pricing pages once there's real GSC
+data showing demand.
+
 
 ## Design system
 
