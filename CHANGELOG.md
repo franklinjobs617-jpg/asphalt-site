@@ -5,6 +5,75 @@ it against the GitHub diff. Newest first.
 
 ---
 
+## 2026-06-30 — Iteration 4: content depth expansion
+
+Self-audit found every page was running 500–930 visible words against
+competitors at 1,500–2,500 words. This iteration brings the five highest-
+priority pages up to 1,000–1,650 words with substantive additions — not
+padding, but content that directly covers additional search intent within
+each page's keyword cluster.
+
+**Modified (content depth only — no new files, no structural changes):**
+
+- `app/page.tsx` (~930 → ~1,645 words)
+  - Added three-column "Real-world calculation examples" section with
+    fully worked-out numbers for a residential driveway (20×40 ft, 2.5 in),
+    small parking lot (60×80 ft, 3 in), and residential walkway (4×50 ft,
+    2 in) — with each step shown explicitly
+  - Added "Common estimating mistakes" section with 5 numbered entries
+    covering: wrong density, forgetting to convert thickness to feet,
+    skipping waste allowance, measuring only the parking pad, and
+    confusing material cost with installed cost
+  - Expanded main explainer copy with more detail on the waste allowance
+    rationale and when to use 5% vs 10%
+  - Added a 6th FAQ item ("How many square feet does a ton cover?")
+
+- `app/tonnage-calculator/page.tsx` (~610 → ~1,204 words)
+  - Expanded the 5-step formula walkthrough from single-sentence bullets
+    into full paragraphs with a note on the most common arithmetic error
+  - Added a commercial parking-row worked example (24×80 ft, 3 in,
+    8% waste, 3 truckloads)
+  - Added 7-row "Tons per 1,000 sq ft by thickness" quick-reference table
+    (1.5 in through 6 in, with cubic yards and typical use case per row)
+  - Added "Why asphalt is sold by the ton, not the yard" section explaining
+    batch plant mechanics, truck capacity types, and minimum order context
+
+- `app/cost-calculator/page.tsx` (~735 → ~1,424 words)
+  - Added "Why asphalt prices vary by location" section with 5 structural
+    price factors (plant distance, aggregate availability, PG binder grade,
+    seasonal demand, labor market) — each as a full paragraph, not a bullet
+  - Added "Sample project cost ranges" table (5 project types × 5 columns:
+    size, tons, material est., installed est.)
+  - Expanded FAQ from 5 to 6 items; added "Does this calculator account
+    for the aggregate base?" which is a top real-user confusion point
+
+- `app/guides/asphalt-density-explained/page.tsx` (~500 → ~1,017 words)
+  - Added a full 5-row density comparison table (all mix types with lb/ft³,
+    kg/m³, and typical use columns)
+  - Added a 4-cell "density difference worked example" panel showing the
+    exact tonnage for 1,000 sq ft at 3 in for all four mix types,
+    illustrating the 20% swing between porous and SMA
+  - Expanded "What actually changes density" section from a bulleted list
+    to 5 full Factor paragraphs (gradation, binder content, compaction
+    effort, temperature, aggregate specific gravity)
+  - Added "How to confirm density with your supplier" section with
+    terminology (TMD, bulk specific gravity) and a cross-link to glossary
+  - Expanded FAQ from 4 to 5 items; added RAP density FAQ
+
+- `app/guides/asphalt-vs-concrete-driveway-cost/page.tsx` (~460 → ~1,056 words)
+  - Expanded comparison table from 8 to 10 rows (added recyclability,
+    install timeline, material pricing format)
+  - Expanded "When asphalt wins" and "When concrete wins" from brief
+    paragraphs to 4-point structured sections with full paragraphs
+    covering cold-climate performance, hot-climate performance, budget,
+    ownership timeline, quick return to use, maintenance preference,
+    aesthetic customization
+  - Added "Total cost of ownership over 30 years" table (600 sq ft
+    driveway, 5 cost line items side by side) to give users a concrete
+    apples-to-apples comparison rather than just upfront cost
+
+---
+
 ## 2026-06-30 — Iteration 3: structural fixes (schema, freshness, glossary)
 
 Per the content self-audit: Article schema was missing on 3/4 guides, no
