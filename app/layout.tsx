@@ -3,6 +3,10 @@ import { Barlow_Condensed, Inter, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import Script from "next/script";
+
+const googleAnalyticsId = "G-PSX4LPV1J9";
+const googleSiteVerification = "QLXDw5BR_clso9WjaFDdRSttSVUrcNIwYpTnjAHqjVs";
 
 const display = Barlow_Condensed({
   subsets: ["latin"],
@@ -33,6 +37,9 @@ export const metadata: Metadata = {
   },
   description:
     "Free asphalt calculator for tonnage, cost, and driveway estimates. Enter your area and thickness to get an instant material and price estimate, built on real paving formulas.",
+  verification: {
+    google: googleSiteVerification,
+  },
   openGraph: {
     title: "Asphalt Calculator HQ",
     description:
@@ -67,6 +74,18 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${display.variable} ${body.variable} ${mono.variable}`}>
       <body>
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${googleAnalyticsId}`}
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${googleAnalyticsId}');
+          `}
+        </Script>
         <Header />
         <main>{children}</main>
         <Footer />
