@@ -4,9 +4,9 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "opennextjs-cloudflare build",
-    "build:next": "next build",
-    "deploy": "opennextjs-cloudflare deploy",
+    "build": "next build",
+    "postbuild": "opennextjs-cloudflare build --skipNextBuild",
+    "deploy": "npm run build && opennextjs-cloudflare deploy",
     "start": "next start",
     "lint": "next lint"
   },
