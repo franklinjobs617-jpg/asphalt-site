@@ -24,6 +24,7 @@ export default function Footer() {
               <li><Link href="/tonnage-calculator" className="hover:text-marking">Tonnage Calculator</Link></li>
               <li><Link href="/cost-calculator" className="hover:text-marking">Cost Calculator</Link></li>
               <li><Link href="/driveway-calculator" className="hover:text-marking">Driveway Calculator</Link></li>
+              <li><Link href="/parking-lot-calculator" className="hover:text-marking">Parking Lot Calculator</Link></li>
               <li><Link href="/unit-converter" className="hover:text-marking">Unit Converter</Link></li>
             </ul>
           </div>

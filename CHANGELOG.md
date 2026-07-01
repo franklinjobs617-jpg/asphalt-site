@@ -5,6 +5,74 @@ it against the GitHub diff. Newest first.
 
 ---
 
+## 2026-06-30 — Iteration 6: parking lot calculator, copy button, irregular area guide, About expansion
+
+Addressed the three genuine gaps identified in the cross-audit against the
+external analysis document: missing parking-lot page (separate commercial
+search intent), no copy-result function (B-end user need), thin About page
+(E-E-A-T/formula transparency). Also added `IrregularAreaGuide` SVG
+component flagged in both the self-audit and external doc.
+
+**Added — new page:**
+- `app/parking-lot-calculator/page.tsx` (~1,366 words)
+  Targets "parking lot asphalt calculator / estimator" commercial cluster.
+  - 4 commercial-scale presets (50×80 / 100×150 / 200×300 / 80×400 ft),
+    each with its own default thickness
+  - 5-row thickness-by-lot-type table (light-duty → fire lane, with base
+    depth and example use per row)
+  - "How parking lots differ from driveways" section: 5 points covering
+    higher waste factor, multi-section paving, stormwater/grading,
+    striping costs, permit requirements
+  - Irregular lot measurement guide (embeds `IrregularAreaGuide`)
+  - 4-row sample lot estimates table (small retail → large retail,
+    with tons, car count, material and installed cost)
+  - 6-item FAQ; HowTo schema with 4 steps
+  - `defaultThickness={3}` prop set (parking lots default to 3 in,
+    not the residential 2.5 in)
+
+**Added — new component:**
+- `components/IrregularAreaGuide.tsx`
+  Three-panel SVG guide for L-shaped, widening/apron, and rounded-corner
+  surfaces — each with an annotated SVG diagram and numbered steps.
+  Embedded in both `parking-lot-calculator` and `driveway-calculator`.
+
+**Modified — `components/Calculator.tsx`**
+  - Added `Copy` button to the output panel header (top-right, inline with
+    "Estimated result" label)
+  - Copy formats a plain-text summary including project dimensions, mix
+    type, area, volume, tons (net + with waste), truckloads, material cost,
+    and installed range (if applicable), plus a disclaimer note
+  - Button shows a ✓ "Copied" confirmation state for 2.5 seconds
+  - Added `defaultThickness` prop — lets individual pages override the
+    slider starting position (parking-lot uses 3, others remain 2.5)
+  - Added `thickness` field to `Preset` interface so presets can also
+    set thickness when clicked
+
+**Modified — `app/about/page.tsx`** (397 → ~841 words)
+  - Added "How the calculators work" section with the formula displayed
+    explicitly and attributed to NAPA guidance + state DOT specs
+  - Added sourcing for all 5 density figures (145/150/130/125/105–115
+    lb/ft³) — explains what each is based on and where it comes from
+  - Added "Pricing figures" sourcing paragraph
+  - Added "How to use these estimates responsibly" section with two
+    structured lists: "Good for" and "Not a substitute for"
+  - Added "Keeping content accurate" paragraph with correction contact CTA
+  - This page now functions as the E-E-A-T / methodology transparency
+    page that AdSense reviewers look for on tool sites
+
+**Modified — `app/driveway-calculator/page.tsx`**
+  - Added `IrregularAreaGuide` import and new "L-shaped or irregular
+    driveways" section (placed after the ThicknessCompare visual)
+
+**Modified — wiring:**
+  - `components/Header.tsx` — added "Parking Lot" nav item
+  - `components/Footer.tsx` — added Parking Lot Calculator link
+  - `app/sitemap.ts` — added `/parking-lot-calculator`
+
+**Site now: 26 static routes, ~17,500+ words of content.**
+
+---
+
 ## 2026-06-30 — Iteration 5: remaining page expansions + 2 new intent-gap pages
 
 **Modified — content depth (4 pages that hadn't been expanded yet):**

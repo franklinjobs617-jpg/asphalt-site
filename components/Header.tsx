@@ -5,6 +5,7 @@ const NAV = [
   { href: "/tonnage-calculator", label: "Tonnage" },
   { href: "/cost-calculator", label: "Cost" },
   { href: "/driveway-calculator", label: "Driveway" },
+  { href: "/parking-lot-calculator", label: "Parking Lot" },
   { href: "/guides", label: "Guides" },
   { href: "/glossary", label: "Glossary" },
 ];

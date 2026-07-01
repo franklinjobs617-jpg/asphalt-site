@@ -3,6 +3,7 @@ import Link from "next/link";
 import Calculator from "@/components/Calculator";
 import ThicknessGuide from "@/components/ThicknessGuide";
 import ThicknessCompare from "@/components/ThicknessCompare";
+import IrregularAreaGuide from "@/components/IrregularAreaGuide";
 import FAQ from "@/components/FAQ";
 import LastUpdated from "@/components/LastUpdated";
 
@@ -135,6 +136,23 @@ export default function DrivewayCalculatorPage() {
         </p>
         <div className="mt-6">
           <ThicknessCompare />
+        </div>
+      </section>
+
+      {/* ── IRREGULAR SHAPES ── */}
+      <section className="border-y border-asphalt-900/10 bg-concrete-50">
+        <div className="mx-auto max-w-6xl px-5 py-14 sm:px-8">
+          <h2 className="font-display text-3xl font-bold uppercase tracking-tight text-asphalt-900">
+            L-shaped or irregular driveways
+          </h2>
+          <p className="mt-3 max-w-2xl font-body text-steel">
+            Most driveways look rectangular but aren't — they include aprons,
+            widening areas, and angled sections. Use the guide below to split
+            your driveway into rectangles and add the calculator results.
+          </p>
+          <div className="mt-6">
+            <IrregularAreaGuide />
+          </div>
         </div>
       </section>
 

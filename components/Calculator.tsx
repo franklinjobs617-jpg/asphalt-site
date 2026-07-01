@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo, useState, useCallback } from "react";
 import CrossSection from "./CrossSection";
 import {
   calculate,
@@ -15,6 +15,7 @@ interface Preset {
   label: string;
   length: number;
   width: number;
+  thickness?: number;
 }
 
 interface CalculatorProps {
@@ -23,6 +24,7 @@ interface CalculatorProps {
   showInstalledRange?: boolean;
   idAnchor?: string;
   defaultMixId?: string;
+  defaultThickness?: number;
 }
 
 export default function Calculator({
@@ -31,38 +33,66 @@ export default function Calculator({
   showInstalledRange = false,
   idAnchor = "calculator",
   defaultMixId = MIX_TYPES[0].id,
+  defaultThickness = DEFAULTS.thicknessDriveway,
 }: CalculatorProps) {
   const [units, setUnits] = useState<Units>("imperial");
   const [length, setLength] = useState(20);
   const [width, setWidth] = useState(16);
-  const [thickness, setThickness] = useState(DEFAULTS.thicknessDriveway);
+  const [thickness, setThickness] = useState(defaultThickness);
   const [mixId, setMixId] = useState(defaultMixId);
   const [wastePct, setWastePct] = useState(DEFAULTS.wastePct);
   const [pricePerTon, setPricePerTon] = useState(DEFAULTS.pricePerTon);
+  const [copied, setCopied] = useState(false);
 
   const density = MIX_TYPES.find((m) => m.id === mixId)?.density ?? DEFAULTS.density;
+  const mixLabel = MIX_TYPES.find((m) => m.id === mixId)?.label ?? "Hot Mix";
 
   const result = useMemo(
     () =>
-      calculate({
-        length,
-        width,
-        thickness,
-        density,
-        wastePct,
-        pricePerTon,
-        units,
-      }),
+      calculate({ length, width, thickness, density, wastePct, pricePerTon, units }),
     [length, width, thickness, density, wastePct, pricePerTon, units]
   );
 
   const lengthLabel = units === "imperial" ? "ft" : "m";
   const thicknessLabel = units === "imperial" ? "in" : "cm";
 
+  const handleCopy = useCallback(() => {
+    const thickUnit = units === "imperial" ? "in" : "cm";
+    const areaUnit = units === "imperial" ? "ft²" : "m²";
+    const text = [
+      `Asphalt Estimate — AsphaltCalculatorHQ.com`,
+      ``,
+      `Project: ${length} × ${width} ${lengthLabel}, ${thickness.toFixed(1)} ${thickUnit} thick`,
+      `Mix: ${mixLabel}`,
+      ``,
+      `Area:           ${fmt(result.areaSqFt)} ${areaUnit}`,
+      `Volume:         ${fmt(result.volumeCuYd)} yd³`,
+      `Weight (net):   ${fmt(result.weightTons)} tons`,
+      `+${wastePct}% waste:     ${fmt(result.weightTonsWithWaste)} tons`,
+      `Truckloads:     ≈ ${fmt(result.truckloads, 1)} loads (16-ton tandem)`,
+      `Material cost:  ${fmtCurrency(result.estimatedCostLow)} (at $${pricePerTon}/ton)`,
+      showInstalledRange
+        ? `Installed est.: ${fmtCurrency(result.estimatedCostLow)} – ${fmtCurrency(result.estimatedCostHigh)}`
+        : "",
+      ``,
+      `Note: Estimates only. Confirm with your asphalt supplier before ordering.`,
+    ]
+      .filter((l) => l !== undefined)
+      .join("\n");
+
+    navigator.clipboard.writeText(text).then(() => {
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2500);
+    });
+  }, [result, length, width, thickness, wastePct, pricePerTon, units, mixLabel, showInstalledRange, lengthLabel]);
+
   return (
-    <div id={idAnchor} className="scroll-mt-24 rounded-md border border-asphalt-900/10 bg-chalk shadow-[0_1px_0_0_rgba(25,24,26,0.06)]">
+    <div
+      id={idAnchor}
+      className="scroll-mt-24 rounded-md border border-asphalt-900/10 bg-chalk shadow-[0_1px_0_0_rgba(25,24,26,0.06)]"
+    >
       <div className="grid lg:grid-cols-[1.1fr_1fr]">
-        {/* INPUT SIDE */}
+        {/* ── INPUT ── */}
         <div className="border-b border-asphalt-900/10 p-6 sm:p-8 lg:border-b-0 lg:border-r">
           <div className="flex items-center justify-between gap-4">
             <h2 className="font-display text-2xl font-bold uppercase tracking-tight text-asphalt-900">
@@ -97,6 +127,7 @@ export default function Calculator({
                     onClick={() => {
                       setLength(p.length);
                       setWidth(p.width);
+                      if (p.thickness) setThickness(p.thickness);
                     }}
                     className="rounded-sm border border-asphalt-900/15 bg-concrete-50 px-3 py-1.5 font-body text-sm text-asphalt-900 transition-colors hover:border-marking-dim hover:bg-marking/10"
                   >
@@ -197,18 +228,53 @@ export default function Calculator({
           </div>
         </div>
 
-        {/* OUTPUT SIDE */}
+        {/* ── OUTPUT ── */}
         <div className="relative overflow-hidden bg-asphalt-900 p-6 text-chalk sm:p-8">
           <div className="blueprint-grid pointer-events-none absolute inset-0 opacity-60" />
           <div className="relative">
-            <span className="font-mono text-xs uppercase tracking-widest text-steel-light">
-              Estimated result
-            </span>
+            <div className="flex items-center justify-between">
+              <span className="font-mono text-xs uppercase tracking-widest text-steel-light">
+                Estimated result
+              </span>
+              <button
+                onClick={handleCopy}
+                className={`flex items-center gap-1.5 rounded-sm border px-3 py-1.5 font-mono text-xs uppercase tracking-widest transition-all ${
+                  copied
+                    ? "border-marking/50 bg-marking/20 text-marking"
+                    : "border-chalk/20 text-steel-light hover:border-chalk/40 hover:text-chalk"
+                }`}
+                title="Copy estimate to clipboard"
+              >
+                {copied ? (
+                  <>
+                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                      <path d="M2 6l3 3 5-5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                    Copied
+                  </>
+                ) : (
+                  <>
+                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                      <rect x="4" y="1" width="7" height="8" rx="1" stroke="currentColor" strokeWidth="1.2"/>
+                      <path d="M1 4h2v6a1 1 0 001 1h4v2" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round"/>
+                    </svg>
+                    Copy
+                  </>
+                )}
+              </button>
+            </div>
 
-            <HeadlineResult headline={headline} result={result} showInstalledRange={showInstalledRange} />
+            <HeadlineResult
+              headline={headline}
+              result={result}
+              showInstalledRange={showInstalledRange}
+            />
 
             <div className="mt-6 -mx-2">
-              <CrossSection thicknessIn={units === "imperial" ? thickness : thickness / 2.54} variant="dark" />
+              <CrossSection
+                thicknessIn={units === "imperial" ? thickness : thickness / 2.54}
+                variant="dark"
+              />
             </div>
 
             <dl className="mt-4 grid grid-cols-2 gap-x-4 gap-y-3 border-t border-chalk/10 pt-5 font-body text-sm">
@@ -253,7 +319,9 @@ function HeadlineResult({
         <div className="font-mono text-5xl font-semibold tabular leading-none sm:text-6xl">
           {fmtCurrency(result.estimatedCostLow)}
           {showInstalledRange && (
-            <span className="text-steel-light"> – {fmtCurrency(result.estimatedCostHigh)}</span>
+            <span className="text-steel-light">
+              {" "}– {fmtCurrency(result.estimatedCostHigh)}
+            </span>
           )}
         </div>
         <div className="mt-1 font-display text-xl uppercase tracking-wide text-marking">

@@ -4,6 +4,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const base = "https://asphaltcalculatorhq.com";
   const routes = [
     "",
+    "/parking-lot-calculator",
     "/tonnage-calculator",
     "/cost-calculator",
     "/driveway-calculator",
