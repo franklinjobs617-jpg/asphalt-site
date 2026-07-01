@@ -4,7 +4,7 @@ import Calculator from "@/components/Calculator";
 import IrregularAreaGuide from "@/components/IrregularAreaGuide";
 import FAQ from "@/components/FAQ";
 import LastUpdated from "@/components/LastUpdated";
-import ScenePhoto from "@/components/ScenePhoto";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "Parking Lot Asphalt Calculator – Tons, Cost & Truckloads",
@@ -40,34 +40,41 @@ export default function ParkingLotCalculatorPage() {
       />
 
       {/* ── HERO ── */}
-      <section className="border-b border-asphalt-900/10 bg-concrete-50">
-        <div className="mx-auto max-w-6xl px-5 pb-10 pt-12 sm:px-8 sm:pb-14 sm:pt-16">
-          <span className="font-mono text-xs uppercase tracking-[0.2em] text-marking-dim">
+      {/* ── HERO — full-bleed image background ── */}
+      <section className="relative overflow-hidden bg-asphalt-900">
+        {/* Background photo: large empty commercial parking lot. Unsplash license — free commercial use. */}
+        <Image
+          src="https://images.unsplash.com/photo-1506521781263-d8422e82f27a?auto=format&fit=crop&w=1800&q=80"
+          alt="Large empty commercial parking lot with white painted lines on fresh asphalt"
+          fill
+          className="object-cover object-center"
+          priority
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-asphalt-900/95 via-asphalt-900/80 to-asphalt-900/30 sm:from-asphalt-900/90 sm:via-asphalt-900/70 sm:to-asphalt-900/20" />
+        <div className="absolute inset-0 bg-gradient-to-t from-asphalt-900/85 via-transparent to-transparent sm:hidden" />
+
+        <div className="relative z-10 mx-auto max-w-6xl px-5 pb-14 pt-16 sm:px-8 sm:pb-20 sm:pt-24">
+          <span className="font-mono text-xs uppercase tracking-[0.2em] text-marking">
             Commercial & Multi-Bay
           </span>
-          <h1 className="mt-3 max-w-3xl font-display text-5xl font-extrabold uppercase leading-[0.95] tracking-tight text-asphalt-900 sm:text-6xl">
+          <h1 className="mt-3 max-w-2xl font-display text-5xl font-extrabold uppercase leading-[0.95] tracking-tight text-chalk sm:text-7xl">
             Parking Lot Asphalt Calculator
           </h1>
           <LastUpdated date="2026-06-30" />
-          <p className="mt-4 max-w-2xl font-body text-lg leading-relaxed text-steel">
+          <p className="mt-4 max-w-xl font-body text-lg leading-relaxed text-chalk/75">
             Parking lots require thicker asphalt than driveways, different waste
             factors for irregular shapes, and multi-truck delivery coordination.
-            Select a preset lot size or enter your dimensions for an accurate
-            tonnage and cost estimate.
+            Select a preset or enter your dimensions for an accurate estimate.
           </p>
+          <div className="mt-6">
+            <a
+              href="#calculator"
+              className="inline-block rounded-sm bg-marking px-6 py-3 font-display text-base font-bold uppercase tracking-tight text-asphalt-900 transition-transform hover:-translate-y-0.5"
+            >
+              Calculate now →
+            </a>
+          </div>
         </div>
-      </section>
-
-      {/* SCENE PHOTO — empty parking lot with white lines */}
-      <section className="mx-auto max-w-6xl px-5 pt-6 sm:px-8">
-        <ScenePhoto
-          photoId="1506521781263-d8422e82f27a"
-          alt="Large empty commercial parking lot with white painted lines on fresh asphalt"
-          caption="A freshly paved commercial parking lot. Photo: Unsplash"
-          aspectRatio="cinematic"
-          overlay
-          priority
-        />
       </section>
 
       {/* ── CALCULATOR ── */}

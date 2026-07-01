@@ -1,9 +1,9 @@
 import Link from "next/link";
+import Image from "next/image";
 import Calculator from "@/components/Calculator";
 import ThicknessGuide from "@/components/ThicknessGuide";
 import FAQ from "@/components/FAQ";
 import LastUpdated from "@/components/LastUpdated";
-import ScenePhoto from "@/components/ScenePhoto";
 
 export default function HomePage() {
   return (
@@ -50,34 +50,43 @@ export default function HomePage() {
       />
 
       {/* ── HERO ── */}
-      <section className="border-b border-asphalt-900/10 bg-concrete-50">
-        <div className="mx-auto max-w-6xl px-5 pb-10 pt-12 sm:px-8 sm:pb-14 sm:pt-16">
-          <span className="font-mono text-xs uppercase tracking-[0.2em] text-marking-dim">
+      {/* ── HERO — full-bleed image background ── */}
+      <section className="relative overflow-hidden bg-asphalt-900">
+        {/* Background photo: paving crew laying fresh hot-mix asphalt. Unsplash license — free commercial use. */}
+        <Image
+          src="https://images.unsplash.com/photo-1592494850005-0c7e7e8345a0?auto=format&fit=crop&w=1800&q=80"
+          alt="Paving crew laying hot-mix asphalt on a residential road"
+          fill
+          className="object-cover object-center"
+          priority
+        />
+        {/* Gradient: opaque left → transparent right on desktop; opaque bottom on mobile */}
+        <div className="absolute inset-0 bg-gradient-to-r from-asphalt-900/95 via-asphalt-900/75 to-asphalt-900/30 sm:from-asphalt-900/90 sm:via-asphalt-900/70 sm:to-asphalt-900/20" />
+        <div className="absolute inset-0 bg-gradient-to-t from-asphalt-900/80 via-transparent to-transparent sm:hidden" />
+
+        <div className="relative z-10 mx-auto max-w-6xl px-5 pb-14 pt-16 sm:px-8 sm:pb-20 sm:pt-24">
+          <span className="font-mono text-xs uppercase tracking-[0.2em] text-marking">
             Free Tool — No Sign-up
           </span>
-          <h1 className="mt-3 max-w-3xl font-display text-5xl font-extrabold uppercase leading-[0.95] tracking-tight text-asphalt-900 sm:text-6xl">
+          <h1 className="mt-3 max-w-2xl font-display text-5xl font-extrabold uppercase leading-[0.95] tracking-tight text-chalk sm:text-7xl">
             Asphalt Calculator
           </h1>
           <LastUpdated date="2026-06-30" />
-          <p className="mt-4 max-w-2xl font-body text-lg leading-relaxed text-steel">
+          <p className="mt-4 max-w-xl font-body text-lg leading-relaxed text-chalk/75">
             Enter your area and thickness to instantly get the tons of asphalt,
             cubic yards, truckload count, and estimated material cost for any
             paving project — using the same density and waste-factor formulas
             professional paving estimators rely on.
           </p>
+          <div className="mt-6">
+            <a
+              href="#calculator"
+              className="inline-block rounded-sm bg-marking px-6 py-3 font-display text-base font-bold uppercase tracking-tight text-asphalt-900 transition-transform hover:-translate-y-0.5"
+            >
+              Calculate now →
+            </a>
+          </div>
         </div>
-      </section>
-
-      {/* SCENE PHOTO — asphalt paving crew in action */}
-      <section className="mx-auto max-w-6xl px-5 pt-6 sm:px-8">
-        <ScenePhoto
-          photoId="1592494850005-0c7e7e8345a0"
-          alt="Paving crew laying fresh hot-mix asphalt on a residential road"
-          caption="Hot-mix asphalt being laid and compacted. Photo: Unsplash"
-          aspectRatio="cinematic"
-          overlay
-          priority
-        />
       </section>
 
       {/* ── CALCULATOR ── */}

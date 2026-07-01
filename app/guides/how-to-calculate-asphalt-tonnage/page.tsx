@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import FAQ from "@/components/FAQ";
 import LastUpdated from "@/components/LastUpdated";
-import ScenePhoto from "@/components/ScenePhoto";
 
 export const metadata: Metadata = {
   title: "How to Calculate Asphalt Tonnage (Step-by-Step Formula + Examples)",
@@ -28,33 +28,32 @@ export default function HowToTonnagePage() {
         }}
       />
 
-      {/* ── HERO ── */}
-      <section className="border-b border-asphalt-900/10 bg-concrete-50">
-        <div className="mx-auto max-w-3xl px-5 pb-10 pt-12 sm:px-8 sm:pb-14 sm:pt-16">
-          <span className="font-mono text-xs uppercase tracking-[0.2em] text-marking-dim">Guide</span>
-          <h1 className="mt-3 font-display text-5xl font-extrabold uppercase leading-[0.95] tracking-tight text-asphalt-900">
+      {/* ── HERO — full-bleed image background ── */}
+      <section className="relative overflow-hidden bg-asphalt-900">
+        {/* Background photo: close-up compacted asphalt surface texture. Unsplash license — free commercial use. */}
+        <Image
+          src="https://images.unsplash.com/photo-1635789146064-ffa7966c32e3?auto=format&fit=crop&w=1800&q=80"
+          alt="Close-up of compacted hot-mix asphalt surface showing aggregate gradation"
+          fill
+          className="object-cover object-center"
+          priority
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-asphalt-900/97 via-asphalt-900/80 to-asphalt-900/40 sm:from-asphalt-900/92 sm:via-asphalt-900/70 sm:to-asphalt-900/25" />
+        <div className="absolute inset-0 bg-gradient-to-t from-asphalt-900/85 via-transparent to-transparent sm:hidden" />
+
+        <div className="relative z-10 mx-auto max-w-3xl px-5 pb-14 pt-16 sm:px-8 sm:pb-20 sm:pt-24">
+          <span className="font-mono text-xs uppercase tracking-[0.2em] text-marking">Guide</span>
+          <h1 className="mt-3 font-display text-5xl font-extrabold uppercase leading-[0.95] tracking-tight text-chalk sm:text-6xl">
             How to Calculate Asphalt Tonnage
           </h1>
           <LastUpdated date="2026-06-30" />
-          <p className="mt-4 font-body text-lg leading-relaxed text-steel">
+          <p className="mt-4 max-w-xl font-body text-lg leading-relaxed text-chalk/75">
             Asphalt tonnage = area (ft²) × thickness (ft) × density (lb/ft³)
-            ÷ 2,000. That's the complete formula — everything below explains
-            each step, shows where people get it wrong, and walks through three
-            real projects from first measurement to final order quantity.
+            ÷ 2,000. Everything below explains each step, shows where people
+            get it wrong, and walks through three real projects from first
+            measurement to final order quantity.
           </p>
         </div>
-      </section>
-
-      {/* SCENE PHOTO — close-up asphalt texture */}
-      <section className="mx-auto max-w-3xl px-5 pt-6 sm:px-8">
-        <ScenePhoto
-          photoId="1635789146064-ffa7966c32e3"
-          alt="Close-up of compacted asphalt surface texture showing aggregate and binder"
-          caption="Compacted hot-mix asphalt surface, showing aggregate gradation. Photo: Unsplash"
-          aspectRatio="wide"
-          overlay
-          priority
-        />
       </section>
 
       {/* ── THE FORMULA ── */}

@@ -6,7 +6,7 @@ import ThicknessCompare from "@/components/ThicknessCompare";
 import IrregularAreaGuide from "@/components/IrregularAreaGuide";
 import FAQ from "@/components/FAQ";
 import LastUpdated from "@/components/LastUpdated";
-import ScenePhoto from "@/components/ScenePhoto";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "Asphalt Driveway Calculator – Material, Cost & Size Guide",
@@ -41,33 +41,41 @@ export default function DrivewayCalculatorPage() {
       />
 
       {/* ── HERO ── */}
-      <section className="border-b border-asphalt-900/10 bg-concrete-50">
-        <div className="mx-auto max-w-6xl px-5 pb-10 pt-12 sm:px-8 sm:pb-14 sm:pt-16">
-          <span className="font-mono text-xs uppercase tracking-[0.2em] text-marking-dim">
+      {/* ── HERO — full-bleed image background ── */}
+      <section className="relative overflow-hidden bg-asphalt-900">
+        {/* Background photo: freshly paved residential driveway. Unsplash license — free commercial use. */}
+        <Image
+          src="https://images.unsplash.com/photo-1631719420609-1077967002bf?auto=format&fit=crop&w=1800&q=80"
+          alt="Freshly paved black asphalt driveway leading to a residential home"
+          fill
+          className="object-cover object-center"
+          priority
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-asphalt-900/95 via-asphalt-900/75 to-asphalt-900/25 sm:from-asphalt-900/90 sm:via-asphalt-900/65 sm:to-asphalt-900/15" />
+        <div className="absolute inset-0 bg-gradient-to-t from-asphalt-900/80 via-transparent to-transparent sm:hidden" />
+
+        <div className="relative z-10 mx-auto max-w-6xl px-5 pb-14 pt-16 sm:px-8 sm:pb-20 sm:pt-24">
+          <span className="font-mono text-xs uppercase tracking-[0.2em] text-marking">
             Built for Residential Driveways
           </span>
-          <h1 className="mt-3 max-w-3xl font-display text-5xl font-extrabold uppercase leading-[0.95] tracking-tight text-asphalt-900 sm:text-6xl">
+          <h1 className="mt-3 max-w-2xl font-display text-5xl font-extrabold uppercase leading-[0.95] tracking-tight text-chalk sm:text-7xl">
             Asphalt Driveway Calculator
           </h1>
           <LastUpdated date="2026-06-30" />
-          <p className="mt-4 max-w-2xl font-body text-lg leading-relaxed text-steel">
+          <p className="mt-4 max-w-xl font-body text-lg leading-relaxed text-chalk/75">
             Pick a preset driveway size or enter your own measurements to get
             the tons of asphalt and estimated material cost. Thickness guidance
-            and common sizing mistakes are below the calculator.
+            and sizing tips are below the calculator.
           </p>
+          <div className="mt-6">
+            <a
+              href="#calculator"
+              className="inline-block rounded-sm bg-marking px-6 py-3 font-display text-base font-bold uppercase tracking-tight text-asphalt-900 transition-transform hover:-translate-y-0.5"
+            >
+              Calculate now →
+            </a>
+          </div>
         </div>
-      </section>
-
-      {/* SCENE PHOTO — fresh residential asphalt driveway */}
-      <section className="mx-auto max-w-6xl px-5 pt-6 sm:px-8">
-        <ScenePhoto
-          photoId="1631719420609-1077967002bf"
-          alt="Freshly paved black asphalt driveway leading to a residential home"
-          caption="A newly completed residential asphalt driveway. Photo: Unsplash"
-          aspectRatio="cinematic"
-          overlay
-          priority
-        />
       </section>
 
       {/* ── CALCULATOR ── */}
