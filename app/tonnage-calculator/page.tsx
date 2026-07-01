@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Calculator from "@/components/Calculator";
 import FAQ from "@/components/FAQ";
+import LastUpdated from "@/components/LastUpdated";
 
 export const metadata: Metadata = {
   title: "Asphalt Tonnage Calculator – Tons & Truckloads from Area",
@@ -36,6 +37,7 @@ export default function TonnageCalculatorPage() {
           <h1 className="mt-3 max-w-3xl font-display text-5xl font-extrabold uppercase leading-[0.95] tracking-tight text-asphalt-900 sm:text-6xl">
             Asphalt Tonnage Calculator
           </h1>
+          <LastUpdated date="2026-06-30" />
           <p className="mt-4 max-w-2xl font-body text-lg leading-relaxed text-steel">
             To calculate asphalt tonnage, multiply area by thickness to get
             volume, then multiply by density and divide by 2,000. This tool

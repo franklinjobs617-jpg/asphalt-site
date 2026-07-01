@@ -44,6 +44,7 @@ export default function Footer() {
               Company
             </div>
             <ul className="mt-3 space-y-2 font-body text-sm">
+              <li><Link href="/glossary" className="hover:text-marking">Glossary</Link></li>
               <li><Link href="/about" className="hover:text-marking">About</Link></li>
               <li><Link href="/contact" className="hover:text-marking">Contact</Link></li>
               <li><Link href="/privacy-policy" className="hover:text-marking">Privacy Policy</Link></li>

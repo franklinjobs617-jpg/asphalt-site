@@ -13,6 +13,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/guides/asphalt-density-explained",
     "/guides/recycled-millings-cold-patch-calculator",
     "/guides/asphalt-vs-concrete-driveway-cost",
+    "/glossary",
     "/about",
     "/contact",
     "/privacy-policy",

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import UnitConverter from "@/components/UnitConverter";
 import FAQ from "@/components/FAQ";
+import LastUpdated from "@/components/LastUpdated";
 
 export const metadata: Metadata = {
   title: "Asphalt Unit Converter — Sq Ft, Sq Yd, Acres, Cubic Yards to Tons",
@@ -17,6 +18,7 @@ export default function UnitConverterPage() {
           <h1 className="mt-3 font-display text-5xl font-extrabold uppercase leading-[0.95] tracking-tight text-asphalt-900">
             Asphalt Unit Converter
           </h1>
+          <LastUpdated date="2026-06-30" />
           <p className="mt-4 font-body text-lg leading-relaxed text-steel">
             Two quick converters: switch between area units (square feet,
             square yards, acres, square meters), or convert a volume in

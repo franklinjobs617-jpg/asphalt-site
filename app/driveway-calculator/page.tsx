@@ -4,6 +4,7 @@ import Calculator from "@/components/Calculator";
 import ThicknessGuide from "@/components/ThicknessGuide";
 import ThicknessCompare from "@/components/ThicknessCompare";
 import FAQ from "@/components/FAQ";
+import LastUpdated from "@/components/LastUpdated";
 
 export const metadata: Metadata = {
   title: "Asphalt Driveway Calculator – Material & Cost by Size",
@@ -29,6 +30,7 @@ export default function DrivewayCalculatorPage() {
           <h1 className="mt-3 max-w-3xl font-display text-5xl font-extrabold uppercase leading-[0.95] tracking-tight text-asphalt-900 sm:text-6xl">
             Asphalt Driveway Calculator
           </h1>
+          <LastUpdated date="2026-06-30" />
           <p className="mt-4 max-w-2xl font-body text-lg leading-relaxed text-steel">
             Pick a common driveway size below or enter your own measurements.
             Residential driveways are typically paved 2–2.5 inches thick for

@@ -6,6 +6,7 @@ const NAV = [
   { href: "/cost-calculator", label: "Cost" },
   { href: "/driveway-calculator", label: "Driveway" },
   { href: "/guides", label: "Guides" },
+  { href: "/glossary", label: "Glossary" },
 ];
 
 export default function Header() {

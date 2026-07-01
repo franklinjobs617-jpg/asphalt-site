@@ -3,6 +3,7 @@ import Link from "next/link";
 import Calculator from "@/components/Calculator";
 import CostBreakdown from "@/components/CostBreakdown";
 import FAQ from "@/components/FAQ";
+import LastUpdated from "@/components/LastUpdated";
 
 export const metadata: Metadata = {
   title: "Asphalt Cost Calculator – Material & Installed Price Estimate",
@@ -21,6 +22,7 @@ export default function CostCalculatorPage() {
           <h1 className="mt-3 max-w-3xl font-display text-5xl font-extrabold uppercase leading-[0.95] tracking-tight text-asphalt-900 sm:text-6xl">
             Asphalt Cost Calculator
           </h1>
+          <LastUpdated date="2026-06-30" />
           <p className="mt-4 max-w-2xl font-body text-lg leading-relaxed text-steel">
             Asphalt cost scales with tonnage: area × thickness × density gives
             weight, and weight × price per ton gives material cost.

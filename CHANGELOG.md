@@ -5,6 +5,53 @@ it against the GitHub diff. Newest first.
 
 ---
 
+## 2026-06-30 — Iteration 3: structural fixes (schema, freshness, glossary)
+
+Per the content self-audit: Article schema was missing on 3/4 guides, no
+page anywhere showed a visible "last updated" date, and there was no
+glossary/terminology page despite that being a low-effort, high-signal
+addition for AdSense's "does this site provide real knowledge value" check.
+
+**Added:**
+- `components/LastUpdated.tsx` — shared "Last updated: [date]" badge
+  component, renders a `<time>` element for machine readability
+- `app/glossary/page.tsx` — 17-term paving glossary (hot mix, tack coat,
+  base course, PG binder, RAP, rutting, etc.), each definition includes
+  *why it matters* rather than just a dictionary definition. Carries
+  `DefinedTermSet`/`DefinedTerm` JSON-LD schema.
+
+**Modified — added Article schema (datePublished/dateModified):**
+- `app/guides/asphalt-density-explained/page.tsx`
+- `app/guides/asphalt-vs-concrete-driveway-cost/page.tsx`
+- `app/guides/recycled-millings-cold-patch-calculator/page.tsx`
+(`app/guides/how-to-calculate-asphalt-tonnage/page.tsx` already had this
+from the previous iteration.)
+
+**Modified — added visible `<LastUpdated />` badge under the H1:**
+- `app/page.tsx`
+- `app/tonnage-calculator/page.tsx`
+- `app/cost-calculator/page.tsx`
+- `app/driveway-calculator/page.tsx`
+- `app/unit-converter/page.tsx`
+- `app/about/page.tsx`
+- All 4 files in `app/guides/*/page.tsx`
+- `app/glossary/page.tsx`
+
+**Modified — navigation/internal linking:**
+- `components/Header.tsx` — added "Glossary" nav item
+- `components/Footer.tsx` — added Glossary link
+- `app/sitemap.ts` — added `/glossary`
+- `app/guides/recycled-millings-cold-patch-calculator/page.tsx` — added an
+  inline cross-link to `/glossary`
+
+**Not yet done (planned for Iteration 4 — content depth):** homepage
+expanded to 1,500+ words with multi-scenario worked examples; cost-
+calculator regional pricing explainer; each guide page deepened toward
+800–1,000 words. See the conversation log / next message for the full
+Iteration 4 scope.
+
+---
+
 ## 2026-06-30 — Site icons
 
 **Added:**

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import DensityChart from "@/components/DensityChart";
 import FAQ from "@/components/FAQ";
+import LastUpdated from "@/components/LastUpdated";
 
 export const metadata: Metadata = {
   title: "Asphalt Density Explained — Why It Changes Your Estimate",
@@ -11,12 +12,27 @@ export const metadata: Metadata = {
 export default function DensityGuidePage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Article",
+            headline: "Asphalt Density Explained",
+            description:
+              "How asphalt density works, why it varies by mix type, and how it changes a tonnage and cost estimate.",
+            datePublished: "2026-06-30",
+            dateModified: "2026-06-30",
+          }),
+        }}
+      />
       <section className="border-b border-asphalt-900/10 bg-concrete-50">
         <div className="mx-auto max-w-3xl px-5 pb-10 pt-12 sm:px-8 sm:pb-14 sm:pt-16">
           <span className="font-mono text-xs uppercase tracking-[0.2em] text-marking-dim">Guide</span>
           <h1 className="mt-3 font-display text-5xl font-extrabold uppercase leading-[0.95] tracking-tight text-asphalt-900">
             Asphalt Density Explained
           </h1>
+          <LastUpdated date="2026-06-30" />
           <p className="mt-4 font-body text-lg leading-relaxed text-steel">
             Asphalt density is the weight of compacted asphalt per cubic
             foot. It's the single number that converts a volume of asphalt

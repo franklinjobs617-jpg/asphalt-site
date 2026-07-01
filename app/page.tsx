@@ -2,6 +2,7 @@ import Link from "next/link";
 import Calculator from "@/components/Calculator";
 import ThicknessGuide from "@/components/ThicknessGuide";
 import FAQ from "@/components/FAQ";
+import LastUpdated from "@/components/LastUpdated";
 
 export default function HomePage() {
   return (
@@ -55,6 +56,7 @@ export default function HomePage() {
           <h1 className="mt-3 max-w-3xl font-display text-5xl font-extrabold uppercase leading-[0.95] tracking-tight text-asphalt-900 sm:text-6xl">
             Asphalt Calculator
           </h1>
+          <LastUpdated date="2026-06-30" />
           <p className="mt-4 max-w-2xl font-body text-lg leading-relaxed text-steel">
             Enter your area and thickness to get the tons of asphalt, cubic
             yards, and estimated material cost for your driveway, parking

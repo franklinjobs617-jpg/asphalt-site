@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import Calculator from "@/components/Calculator";
 import FAQ from "@/components/FAQ";
+import LastUpdated from "@/components/LastUpdated";
 
 export const metadata: Metadata = {
   title: "Recycled Asphalt Millings & Cold Patch Calculator",
@@ -10,12 +12,27 @@ export const metadata: Metadata = {
 export default function RecycledCalculatorPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Article",
+            headline: "Recycled Asphalt Millings & Cold Patch Calculator",
+            description:
+              "How to calculate recycled asphalt millings (RAP) or cold-patch material quantities for a driveway base or pothole repair.",
+            datePublished: "2026-06-30",
+            dateModified: "2026-06-30",
+          }),
+        }}
+      />
       <section className="border-b border-asphalt-900/10 bg-concrete-50">
         <div className="mx-auto max-w-3xl px-5 pb-10 pt-12 sm:px-8 sm:pb-14 sm:pt-16">
           <span className="font-mono text-xs uppercase tracking-[0.2em] text-marking-dim">Specialty Materials</span>
           <h1 className="mt-3 font-display text-5xl font-extrabold uppercase leading-[0.95] tracking-tight text-asphalt-900">
             Recycled Millings & Cold Patch Calculator
           </h1>
+          <LastUpdated date="2026-06-30" />
           <p className="mt-4 font-body text-lg leading-relaxed text-steel">
             Recycled asphalt millings (RAP) and cold-patch material are
             lighter and looser than fresh hot mix, so they need their own
@@ -72,6 +89,14 @@ export default function RecycledCalculatorPage() {
           gives you a specific density for the load you're buying, switch
           the calculator's mix type and use that number instead of our
           default for a closer estimate.
+        </p>
+        <p className="mt-3 font-body leading-relaxed text-steel">
+          Unfamiliar with a term on this page?{" "}
+          <Link href="/glossary" className="text-marking-dim underline">
+            Check the glossary
+          </Link>{" "}
+          for plain-English definitions of RAP, base course, and other
+          paving terms.
         </p>
       </section>
 

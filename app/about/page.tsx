@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import LastUpdated from "@/components/LastUpdated";
 
 export const metadata: Metadata = {
   title: "About",
@@ -15,6 +16,7 @@ export default function AboutPage() {
       <h1 className="mt-3 font-display text-5xl font-extrabold uppercase leading-[0.95] tracking-tight text-asphalt-900">
         Built by people who measure their own driveways
       </h1>
+      <LastUpdated date="2026-06-30" />
 
       <div className="mt-8 space-y-5 font-body leading-relaxed text-steel">
         <p>

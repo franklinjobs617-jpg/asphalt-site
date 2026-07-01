@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import FAQ from "@/components/FAQ";
+import LastUpdated from "@/components/LastUpdated";
 
 export const metadata: Metadata = {
   title: "How to Calculate Asphalt Tonnage (Step by Step)",
@@ -29,6 +30,7 @@ export default function HowToTonnagePage() {
           <h1 className="mt-3 font-display text-5xl font-extrabold uppercase leading-[0.95] tracking-tight text-asphalt-900">
             How to Calculate Asphalt Tonnage
           </h1>
+          <LastUpdated date="2026-06-30" />
           <p className="mt-4 font-body text-lg leading-relaxed text-steel">
             Asphalt tonnage = area (ft²) × thickness (ft) × density (lb/ft³)
             ÷ 2,000. That&apos;s the whole formula — everything below is how

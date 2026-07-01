@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import CompareTable from "@/components/CompareTable";
 import FAQ from "@/components/FAQ";
+import LastUpdated from "@/components/LastUpdated";
 
 export const metadata: Metadata = {
   title: "Asphalt vs. Concrete Driveway Cost Compared",
@@ -11,12 +12,27 @@ export const metadata: Metadata = {
 export default function AsphaltVsConcretePage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Article",
+            headline: "Asphalt vs. Concrete Driveway Cost",
+            description:
+              "Side-by-side cost, lifespan, climate fit, and maintenance comparison between asphalt and concrete driveways.",
+            datePublished: "2026-06-30",
+            dateModified: "2026-06-30",
+          }),
+        }}
+      />
       <section className="border-b border-asphalt-900/10 bg-concrete-50">
         <div className="mx-auto max-w-3xl px-5 pb-10 pt-12 sm:px-8 sm:pb-14 sm:pt-16">
           <span className="font-mono text-xs uppercase tracking-[0.2em] text-marking-dim">Material Comparison</span>
           <h1 className="mt-3 font-display text-5xl font-extrabold uppercase leading-[0.95] tracking-tight text-asphalt-900">
             Asphalt vs. Concrete Driveway Cost
           </h1>
+          <LastUpdated date="2026-06-30" />
           <p className="mt-4 font-body text-lg leading-relaxed text-steel">
             Asphalt costs less upfront and handles freeze-thaw cycles
             better; concrete lasts longer and needs less routine
