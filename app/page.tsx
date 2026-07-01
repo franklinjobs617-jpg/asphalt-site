@@ -3,6 +3,7 @@ import Calculator from "@/components/Calculator";
 import ThicknessGuide from "@/components/ThicknessGuide";
 import FAQ from "@/components/FAQ";
 import LastUpdated from "@/components/LastUpdated";
+import ScenePhoto from "@/components/ScenePhoto";
 
 export default function HomePage() {
   return (
@@ -65,6 +66,18 @@ export default function HomePage() {
             professional paving estimators rely on.
           </p>
         </div>
+      </section>
+
+      {/* SCENE PHOTO — asphalt paving crew in action */}
+      <section className="mx-auto max-w-6xl px-5 pt-6 sm:px-8">
+        <ScenePhoto
+          photoId="1592494850005-0c7e7e8345a0"
+          alt="Paving crew laying fresh hot-mix asphalt on a residential road"
+          caption="Hot-mix asphalt being laid and compacted. Photo: Unsplash"
+          aspectRatio="cinematic"
+          overlay
+          priority
+        />
       </section>
 
       {/* ── CALCULATOR ── */}

@@ -4,6 +4,7 @@ import Calculator from "@/components/Calculator";
 import IrregularAreaGuide from "@/components/IrregularAreaGuide";
 import FAQ from "@/components/FAQ";
 import LastUpdated from "@/components/LastUpdated";
+import ScenePhoto from "@/components/ScenePhoto";
 
 export const metadata: Metadata = {
   title: "Parking Lot Asphalt Calculator – Tons, Cost & Truckloads",
@@ -55,6 +56,18 @@ export default function ParkingLotCalculatorPage() {
             tonnage and cost estimate.
           </p>
         </div>
+      </section>
+
+      {/* SCENE PHOTO — empty parking lot with white lines */}
+      <section className="mx-auto max-w-6xl px-5 pt-6 sm:px-8">
+        <ScenePhoto
+          photoId="1506521781263-d8422e82f27a"
+          alt="Large empty commercial parking lot with white painted lines on fresh asphalt"
+          caption="A freshly paved commercial parking lot. Photo: Unsplash"
+          aspectRatio="cinematic"
+          overlay
+          priority
+        />
       </section>
 
       {/* ── CALCULATOR ── */}

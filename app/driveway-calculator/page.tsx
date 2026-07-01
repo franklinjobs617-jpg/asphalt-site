@@ -6,6 +6,7 @@ import ThicknessCompare from "@/components/ThicknessCompare";
 import IrregularAreaGuide from "@/components/IrregularAreaGuide";
 import FAQ from "@/components/FAQ";
 import LastUpdated from "@/components/LastUpdated";
+import ScenePhoto from "@/components/ScenePhoto";
 
 export const metadata: Metadata = {
   title: "Asphalt Driveway Calculator – Material, Cost & Size Guide",
@@ -55,6 +56,18 @@ export default function DrivewayCalculatorPage() {
             and common sizing mistakes are below the calculator.
           </p>
         </div>
+      </section>
+
+      {/* SCENE PHOTO — fresh residential asphalt driveway */}
+      <section className="mx-auto max-w-6xl px-5 pt-6 sm:px-8">
+        <ScenePhoto
+          photoId="1631719420609-1077967002bf"
+          alt="Freshly paved black asphalt driveway leading to a residential home"
+          caption="A newly completed residential asphalt driveway. Photo: Unsplash"
+          aspectRatio="cinematic"
+          overlay
+          priority
+        />
       </section>
 
       {/* ── CALCULATOR ── */}

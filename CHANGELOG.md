@@ -5,6 +5,68 @@ it against the GitHub diff. Newest first.
 
 ---
 
+## 2026-06-30 — Iteration 8: real scene photos, OG image, 404, expanded contact
+
+**Added — new component:**
+- `components/ScenePhoto.tsx`
+  Reusable full-width contextual photograph component using Next.js
+  `<Image>` with Unsplash CDN. Props: `photoId` (Unsplash photo ID),
+  `alt`, `caption`, `aspectRatio` (wide/cinematic/square), `overlay`
+  (dark gradient for text legibility), `priority` (LCP hint).
+  All photos are under the Unsplash License — free for commercial use,
+  no attribution required (caption included anyway for transparency).
+
+**Modified — 4 pages now have real scene photography:**
+- `app/page.tsx` — paving crew laying fresh hot-mix asphalt on a road
+  (photo ID: `1592494850005-0c7e7e8345a0`), placed between hero text
+  and calculator as a full-bleed cinematic strip.
+- `app/driveway-calculator/page.tsx` — freshly paved residential
+  asphalt driveway (photo ID: `1631719420609-1077967002bf`).
+- `app/parking-lot-calculator/page.tsx` — large empty commercial
+  parking lot with white painted lines (photo ID: `1506521781263-d8422e82f27a`).
+- `app/guides/how-to-calculate-asphalt-tonnage/page.tsx` — close-up
+  of compacted asphalt surface texture showing aggregate gradation
+  (photo ID: `1635789146064-ffa7966c32e3`).
+
+**Added — `app/opengraph-image.tsx`**
+  Dynamic OG/Twitter card image generated at request time via Next.js
+  edge runtime + `next/og` ImageResponse. Renders the site's visual
+  identity: dark asphalt background, blueprint grid, pavement cross-
+  section stripe accent, "ASPHALT CALCULATOR HQ" headline, tagline,
+  and stats row. Output: 1200×630 PNG.
+  All pages now share this as the default og:image and twitter:image
+  (wired via `images` field added to `openGraph` and `twitter` in
+  `app/layout.tsx`).
+
+**Added — `app/not-found.tsx`**
+  Custom 404 page replacing Next.js's default. Uses the site's design
+  system: cross-section stripe accent, 8-card grid of all main
+  calculators and reference pages with descriptions, contact link.
+
+**Modified — `app/contact/page.tsx`** (183 → ~550 words)
+  Expanded from bare email address to a full contact page with:
+  - Primary contact email in a dark panel
+  - 4 categorized "what we can help with" sections: formula errors,
+    calculator bugs, content questions, advertising inquiries
+  - "What we don't provide" panel (contractor referrals, engineering
+    advice, phone support)
+  - Response time expectation
+
+**Modified — `app/layout.tsx`**
+  Added `images` array to both `openGraph` and `twitter` metadata
+  objects, pointing to `/opengraph-image`. This wires the OG image
+  into every page's `<head>` automatically.
+
+**Modified — `next.config.mjs`**
+  Added `images.remotePatterns` allowing Unsplash CDN
+  (`images.unsplash.com`) so Next.js Image optimization works for
+  the Unsplash photo URLs.
+
+**Site now: 27 static routes + 1 dynamic (OG image), ~20,000+ words.**
+**Score estimate: ~8/10 toward original vision.**
+
+---
+
 ## 2026-06-30 — Iteration 7: FAQ aggregation page
 
 **Key design decision:** all 38 answers are fully visible on page load —

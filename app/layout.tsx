@@ -39,6 +39,14 @@ export const metadata: Metadata = {
       "Estimate asphalt tonnage, volume, and cost for driveways, parking lots, and paving projects in seconds.",
     url: "https://asphaltcalculatorhq.com",
     siteName: "Asphalt Calculator HQ",
+    images: [
+      {
+        url: "https://asphaltcalculatorhq.com/opengraph-image",
+        width: 1200,
+        height: 630,
+        alt: "Asphalt Calculator HQ — Free material and cost estimator",
+      },
+    ],
     locale: "en_US",
     type: "website",
   },
@@ -47,6 +55,7 @@ export const metadata: Metadata = {
     title: "Asphalt Calculator HQ",
     description:
       "Estimate asphalt tonnage, volume, and cost for your paving project in seconds.",
+    images: ["https://asphaltcalculatorhq.com/opengraph-image"],
   },
 };
 

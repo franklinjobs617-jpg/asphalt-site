@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import FAQ from "@/components/FAQ";
 import LastUpdated from "@/components/LastUpdated";
+import ScenePhoto from "@/components/ScenePhoto";
 
 export const metadata: Metadata = {
   title: "How to Calculate Asphalt Tonnage (Step-by-Step Formula + Examples)",
@@ -42,6 +43,18 @@ export default function HowToTonnagePage() {
             real projects from first measurement to final order quantity.
           </p>
         </div>
+      </section>
+
+      {/* SCENE PHOTO — close-up asphalt texture */}
+      <section className="mx-auto max-w-3xl px-5 pt-6 sm:px-8">
+        <ScenePhoto
+          photoId="1635789146064-ffa7966c32e3"
+          alt="Close-up of compacted asphalt surface texture showing aggregate and binder"
+          caption="Compacted hot-mix asphalt surface, showing aggregate gradation. Photo: Unsplash"
+          aspectRatio="wide"
+          overlay
+          priority
+        />
       </section>
 
       {/* ── THE FORMULA ── */}
