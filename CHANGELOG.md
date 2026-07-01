@@ -5,6 +5,86 @@ it against the GitHub diff. Newest first.
 
 ---
 
+## 2026-06-30 — Iteration 5: remaining page expansions + 2 new intent-gap pages
+
+**Modified — content depth (4 pages that hadn't been expanded yet):**
+
+- `app/driveway-calculator/page.tsx` (~678 → ~1,420 words)
+  - Added 6-row standard driveway sizes table (dimensions, area, thickness,
+    approx. tons, material estimate)
+  - Added 4-step "How to measure your driveway correctly" dark section
+    (full footprint, irregular shapes, street edge/apron, door-swing width)
+  - Added "What this calculator doesn't include: the base layer" section
+    — explains aggregate base, why skipping it causes early pavement
+    failure, and what "paving over gravel" actually requires
+  - Related tools links updated to include vs-concrete guide and glossary
+  - FAQ expanded from 5 to 6 items
+
+- `app/unit-converter/page.tsx` (~344 → ~811 words)
+  - Added 10-row quick-conversion reference table (all common conversions
+    with factor column and notes)
+  - Added "Why asphalt uses so many different units" section explaining
+    why the industry spans sq ft / sq yd / acres / cubic yards / tons
+  - Added 4 formula boxes (area→volume, volume→tons, cy→tons, sqft→tons
+    direct) in the dark panel format used on other pages
+
+- `app/guides/how-to-calculate-asphalt-tonnage/page.tsx` (~596 → ~1,040 words)
+  - Added inline formula reference panel (L × W × (T÷12) × D ÷ 2,000)
+    with variable legend
+  - Rewrote 5-step walkthrough as full structured sections with Step n /
+    title / body / tip (where relevant) format
+  - Added three worked examples: residential driveway (18×36 ft, 2.5 in),
+    commercial parking lot (60×120 ft, 3 in), permeable path with porous
+    mix (6×50 ft, 2 in, 125 lb/ft³ density)
+
+- `app/guides/recycled-millings-cold-patch-calculator/page.tsx`
+  (~594 → ~1,223 words)
+  - Added 4-material comparison table (millings, cold patch, hot mix, SMA)
+    with density, cost, best use, and limitations columns
+  - Expanded millings section to 4 paragraphs covering what RAP is, how
+    residual binder behaves, density variability, and when not to use it
+  - Added cold-patch section covering product types (temporary vs.
+    permanent), use cases, and bag-count calculation for potholes
+
+**Added — 2 new intent-gap pages:**
+
+- `app/guides/asphalt-sealcoating-calculator/page.tsx` (~1,062 words)
+  - Targets "asphalt sealcoating calculator" / "asphalt sealer calculator"
+    cluster (~320/mo, KD 7–11)
+  - Includes a live interactive sealcoat calculator (gallons needed,
+    coverage rate adjustment, coat count, material cost estimate)
+  - "What sealcoating does and doesn't do" section in dark panel
+  - "When to sealcoat — and when to wait" section (timing, temperature,
+    first-seal delay)
+  - 6-row coverage by driveway size reference table
+  - HowTo schema + Article schema
+
+- `app/guides/asphalt-calculator-alternatives/page.tsx` (~1,083 words)
+  - Targets "vulcan asphalt calculator" / "pike asphalt calculator" brand
+    searches (~550/mo combined, KD 6–9)
+  - Explains how supplier-hosted calculators (Vulcan, Pike, Lehigh Hanson)
+    work and what their structural limitations are
+  - "What an independent calculator does differently" section (4 points)
+  - "When to use each" guidance
+  - 7-row feature comparison table
+  - Article schema
+
+**Added — new component:**
+- `components/SealcoatCalc.tsx` — standalone client component for the
+  sealcoat calculator interactive widget (pulled out of the page file to
+  satisfy Next.js server/client component rules)
+
+**Modified — wiring:**
+- `app/guides/page.tsx` — added 2 new guides to the GUIDES array; updated
+  metadata description; added tag badges to guide cards
+- `app/sitemap.ts` — added 2 new routes
+- `components/Footer.tsx` — added Sealcoating Calculator and Calculator
+  Alternatives links
+
+**Site now has 25 static routes and ~16,000+ words of content across all pages.**
+
+---
+
 ## 2026-06-30 — Iteration 4: content depth expansion
 
 Self-audit found every page was running 500–930 visible words against
