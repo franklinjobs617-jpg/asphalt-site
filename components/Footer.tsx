@@ -47,6 +47,7 @@ export default function Footer() {
             <ul className="mt-3 space-y-2 font-body text-sm">
               <li><Link href="/guides/asphalt-sealcoating-calculator" className="hover:text-marking">Sealcoating Calculator</Link></li>
               <li><Link href="/guides/asphalt-calculator-alternatives" className="hover:text-marking">Calculator Alternatives</Link></li>
+              <li><Link href="/faq" className="hover:text-marking">FAQ</Link></li>
               <li><Link href="/glossary" className="hover:text-marking">Glossary</Link></li>
               <li><Link href="/about" className="hover:text-marking">About</Link></li>
               <li><Link href="/contact" className="hover:text-marking">Contact</Link></li>

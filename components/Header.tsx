@@ -7,6 +7,7 @@ const NAV = [
   { href: "/driveway-calculator", label: "Driveway" },
   { href: "/parking-lot-calculator", label: "Parking Lot" },
   { href: "/guides", label: "Guides" },
+  { href: "/faq", label: "FAQ" },
   { href: "/glossary", label: "Glossary" },
 ];
 

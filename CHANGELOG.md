@@ -5,6 +5,44 @@ it against the GitHub diff. Newest first.
 
 ---
 
+## 2026-06-30 — Iteration 7: FAQ aggregation page
+
+**Key design decision:** all 38 answers are fully visible on page load —
+no accordion, no collapse. Google's FAQPage rich result guidelines require
+answers to be visible to users without interaction. Collapsible accordions
+risk disqualifying the page from rich results and make it harder for
+crawlers to read content. The existing `FAQ.tsx` accordion component on
+individual pages is kept for UX (condensed sections), but the dedicated
+FAQ page uses a permanently-expanded layout.
+
+**Added:**
+- `app/faq/page.tsx` (~2,320 words, 38 Q&A pairs across 7 categories)
+  - 7 sections with jump-link navigation: Calculating tonnage & volume /
+    Density & mix types / Cost & pricing / Thickness & specifications /
+    Driveways / Materials & alternatives / Ordering & working with
+    contractors
+  - Every answer fully visible on page load (no accordion)
+  - FAQPage JSON-LD schema covering all 38 questions — schema text
+    mirrors the on-page text exactly (Google requires this)
+  - Jump-link nav at the top of the page for each section
+  - 13 answers include an inline "→" link to the relevant calculator
+    or guide page for internal linking
+  - Calculator CTA panel at the bottom linking to all 5 calculators
+  - Content draws from and consolidates questions across all existing
+    pages, adding new questions not covered elsewhere (contractor
+    questions, batch plant minimums, what to ask before signing a quote)
+
+**Modified — wiring:**
+- `components/Header.tsx` — added "FAQ" nav item between Guides and
+  Glossary
+- `components/Footer.tsx` — added FAQ link
+- `app/sitemap.ts` — added `/faq`
+
+**Site now: 27 static routes, ~19,500+ words of content.**
+**All structural gaps identified in the cross-audit are now closed.**
+
+---
+
 ## 2026-06-30 — Iteration 6: parking lot calculator, copy button, irregular area guide, About expansion
 
 Addressed the three genuine gaps identified in the cross-audit against the

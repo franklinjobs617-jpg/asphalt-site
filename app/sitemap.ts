@@ -16,6 +16,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/guides/asphalt-vs-concrete-driveway-cost",
     "/guides/asphalt-sealcoating-calculator",
     "/guides/asphalt-calculator-alternatives",
+    "/faq",
     "/glossary",
     "/about",
     "/contact",
